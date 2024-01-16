@@ -12,7 +12,6 @@ import java.util.List;
 public class NewToursTest {
 
 	@Test
-	// public static void main(String[] args) throws InterruptedException {
 	public void test() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\chromedriver.exe");
 		
