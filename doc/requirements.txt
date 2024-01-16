@@ -1,0 +1,11 @@
+
+
+This Selenium test automates the following steps:
+==================================================
+- Navigate to the Guru99 Demo Website.
+- Log in with a username and password.
+- Go to the flight reservation page.
+- Set various flight details such as one-way trip, passenger count, departing and arriving airports, dates, service class, and airline.
+- Display and print the list of available airlines.
+- Find and display available flights.
+- Close the browser.

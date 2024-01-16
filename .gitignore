@@ -1,0 +1,22 @@
+# Eclipse
+.classpath
+.project
+web-application/.factorypath
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+bin/
+
+
+*.factorypath
+.deprecated/
