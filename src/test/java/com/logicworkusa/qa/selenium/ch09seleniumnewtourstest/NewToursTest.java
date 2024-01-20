@@ -14,10 +14,10 @@ public class NewToursTest {
 	@Test
 	public void test() throws InterruptedException {
 		// for WINDOWS-64
-	    System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\win64-chromedriver-120_0_6099_109.exe");
+	    // System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\win64-chromedriver-120_0_6099_109.exe");
 		
 		// for MAC-x64
-	    // System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/mac-x64-chromedriver-120_0_6099_109");
+	    System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/mac-x64-chromedriver-120_0_6099_109");
 		
 		// for MAC-arm64
 		// System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/mac-arm64-chromedriver-120_0_6099_109");
