@@ -24,6 +24,13 @@ public class NewToursTest {
 		
 		//(1) Create a new instance of the Chrome driver
 		WebDriver driver = new ChromeDriver();
+		
+		/** Hide (Headless) Browser **/
+		/*
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--headless=new");
+	        driver = new ChromeDriver(options);
+        */
 
 		//(2) Open the URL
 		driver.navigate().to("http://demo.guru99.com/test/newtours/");
