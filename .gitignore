@@ -20,3 +20,4 @@ bin/
 
 *.factorypath
 .deprecated/
+test-output/
