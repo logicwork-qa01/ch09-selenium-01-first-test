@@ -16,6 +16,9 @@ public class NewToursTest {
 		// for WINDOWS-64
 	    System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\win64-chromedriver-120_0_6099_109.exe");
 		
+	    // for LINUX-64
+	    System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/linux64-chromedriver-120_0_6099_109");
+	    
 		// for MAC-x64
 	    // System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/mac-x64-chromedriver-120_0_6099_109");
 		
