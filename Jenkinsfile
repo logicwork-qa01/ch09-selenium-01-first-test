@@ -8,7 +8,7 @@ pipeline {
                 // bat "mvn -D clean test"
                 
     			// To run Maven on Linux agent:
-    			sh "/usr/mvn clean test"
+    			sh "mvn clean test"
             }
  
             post {
