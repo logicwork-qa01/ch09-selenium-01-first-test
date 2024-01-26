@@ -10,7 +10,7 @@ pipeline {
                 
                 def mvnHome = tool name: 'Apache Maven 3.6.0', type: 'maven'
     			// sh "${mvnHome}/bin/mvn -D clean test"
-    			sh mvn clean test"
+    			sh "mvn clean test"
             }
  
             post {
