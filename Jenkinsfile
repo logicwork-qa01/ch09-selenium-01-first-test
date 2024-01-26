@@ -5,11 +5,10 @@ pipeline {
         stage('Test') {
             steps {
  
-                // To run Maven on a Windows agent, use
+                // To run Maven on Windows agent:
                 // bat "mvn -D clean test"
                 
-                def mvnHome = tool name: 'Apache Maven 3.6.0', type: 'maven'
-    			// sh "${mvnHome}/bin/mvn -D clean test"
+    			// To run Maven on Linux agent:
     			sh "mvn clean test"
             }
  
