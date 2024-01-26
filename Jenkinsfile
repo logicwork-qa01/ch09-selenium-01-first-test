@@ -1,16 +1,16 @@
 pipeline {
     agent any
  
-    tools {
-    	maven 'M3'
-  	}
-    
     stages {
         stage('Test') {
             steps {
  
                 // To run Maven on a Windows agent, use
-                sh "mvn -D clean test"
+                // bat "mvn -D clean test"
+                
+                def mvnHome = tool name: 'Apache Maven 3.6.0', type: 'maven'
+    			// sh "${mvnHome}/bin/mvn -D clean test"
+    			sh mvn -D clean test"
             }
  
             post {
