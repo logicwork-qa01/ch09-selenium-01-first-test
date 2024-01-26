@@ -4,13 +4,11 @@ pipeline {
     stages {
         stage('Test') {
             steps {
- 				withMaven(maven: 'maven_3_8_4') {
-	                // To run Maven on Windows agent:
-	                // bat "mvn -D clean test"
-	                
-	    			// To run Maven on Linux agent:
-	    			sh "/usr/mvn clean test"
-	    		}
+                // To run Maven on Windows agent:
+                // bat "mvn -D clean test"
+                
+    			// To run Maven on Linux agent:
+    			sh "/usr/mvn clean test"
             }
  
             post {
