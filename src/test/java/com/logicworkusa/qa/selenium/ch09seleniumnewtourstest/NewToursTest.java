@@ -14,7 +14,7 @@ public class NewToursTest {
 	@Test
 	public void test() throws InterruptedException {
 		// for WINDOWS-64
-	    System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\win64-chromedriver-120_0_6099_109.exe");
+	    // System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\win64-chromedriver-120_0_6099_109.exe");
 		
 	    // for LINUX-64
 	    System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/linux64-chromedriver-120_0_6099_109");
