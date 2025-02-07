@@ -14,13 +14,16 @@ public class NewToursTest {
 	@Test
 	public void test() throws InterruptedException {
 		// for WINDOWS-64
-	    System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\win64-chromedriver-120_0_6099_109.exe");
+    	// System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\win64_chromedriver_133_0_6943_53.exe");
+    	
+    	// for LINUX-64
+    	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/linux64_chromedriver_133_0_6943_53");
 		
 		// for MAC-x64
-	    // System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/mac-x64-chromedriver-120_0_6099_109");
+		// System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/mac_x64_chromedriver_120_0_6099_109");
 		
 		// for MAC-arm64
-		// System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/mac-arm64-chromedriver-120_0_6099_109");
+		// System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/mac_arm64_chromedriver_120_0_6099_109");
 		
 		//(1) Create a new instance of the Chrome driver
 		WebDriver driver = new ChromeDriver();
