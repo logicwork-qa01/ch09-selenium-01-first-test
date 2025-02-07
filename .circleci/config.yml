@@ -8,17 +8,19 @@ jobs:
       CHROMEDRIVER_PATH: "/usr/local/bin/chromedriver"  # Set the ChromeDriver path here
     steps:
       - checkout  # Check out the code from the repository
+        name: Checkout Code
 
       # Step 1: Install dependencies using Maven
       - run:
-          name: Set up Maven
+          name: Set up Maven dependencies
           command: mvn clean install
 
-      # Step 2: Install ChromeDriver
+      # Step 2: Install ChromeDriver using curl
       - run:
           name: Install ChromeDriver
           command: |
-            wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
+            echo "Installing ChromeDriver..."
+            curl -O https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
             unzip chromedriver_linux64.zip
             mv chromedriver /usr/local/bin/chromedriver
             chmod +x /usr/local/bin/chromedriver  # Make it executable
