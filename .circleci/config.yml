@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: maven:3.8.1-openjdk-8  # Use Maven with JDK 8
+      - image: maven:3.8.1-openjdk-15  # Use Maven with JDK 15
     steps:
       - checkout  # Check out the code from the repository
 
