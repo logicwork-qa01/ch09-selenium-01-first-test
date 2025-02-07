@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: maven:3.8.1-openjdk-15  # Use Maven with JDK 15
+      - image: maven:3.8-openjdk-15-slim  # Use Maven with JDK 15
     environment:
       CHROMEDRIVER_PATH: "/usr/local/bin/chromedriver"  # Set the ChromeDriver path here
     steps:
