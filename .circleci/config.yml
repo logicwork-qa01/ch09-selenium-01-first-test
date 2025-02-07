@@ -8,18 +8,19 @@ jobs:
       CHROMEDRIVER_PATH: "/usr/local/bin/chromedriver"  # Set the ChromeDriver path here
     steps:
       - checkout  # Check out the code from the repository
-        name: Checkout Code
 
       # Step 1: Install dependencies using Maven
       - run:
-          name: Set up Maven dependencies
-          command: mvn clean install
+          name: Set up Maven
+          command: |
+            echo "Set up Maven..."
+            mvn clean install
 
-      # Step 2: Install ChromeDriver using curl
+      # Step 2: Install ChromeDriver
       - run:
           name: Install ChromeDriver
           command: |
-            echo "Installing ChromeDriver..."
+            echo "Install ChromeDriver..."
             curl -O https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
             unzip chromedriver_linux64.zip
             mv chromedriver /usr/local/bin/chromedriver
@@ -28,26 +29,32 @@ jobs:
       # Step 3: Run tests using Maven (TestNG will generate the report)
       - run:
           name: Run Tests with TestNG
-          command: mvn test
+          command: |
+            echo "Run Tests with TestNG..."
+            mvn test
 
       # Step 4: Upload the TestNG results to Zephyr Scale using a script
       - run:
           name: Upload Test Results to Zephyr Scale
           command: |
+            echo "Upload Test Results to Zephyr Scale..."
+
             # TestNG results file location
             TESTNG_RESULTS_FILE="target/test-output/testng-results.xml"
 
             # Check if the file exists
             if [ -f "$TESTNG_RESULTS_FILE" ]; then
-                echo "TestNG results found. Uploading to Zephyr Scale..."
-
+                echo "TestNG results found"
+                                
                 # Prepare the request for Zephyr Scale API (adjust for your API endpoint and credentials)
                 curl -X POST -u "YOUR_USERNAME:YOUR_API_TOKEN" \
                 -H "Content-Type: application/json" \
                 -d @target/test-output/testng-results.xml \
                 "https://YOUR_ZEPHYR_URL/zephyr/api/latest/testresult"
+                
+                echo "Uploading to Zephyr Scale."
             else
-                echo "TestNG results file not found. Skipping Zephyr upload."
+                echo "TestNG results file not found. Skipped Zephyr upload."
             fi
 
 workflows:
