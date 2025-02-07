@@ -4,6 +4,8 @@ jobs:
   test:
     docker:
       - image: maven:3.8.1-openjdk-15  # Use Maven with JDK 15
+    environment:
+      CHROMEDRIVER_PATH: "/usr/local/bin/chromedriver"  # Set the ChromeDriver path here
     steps:
       - checkout  # Check out the code from the repository
 
@@ -12,12 +14,21 @@ jobs:
           name: Set up Maven
           command: mvn clean install
 
-      # Step 2: Run tests using Maven (TestNG will generate the report)
+      # Step 2: Install ChromeDriver
+      - run:
+          name: Install ChromeDriver
+          command: |
+            wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
+            unzip chromedriver_linux64.zip
+            mv chromedriver /usr/local/bin/chromedriver
+            chmod +x /usr/local/bin/chromedriver  # Make it executable
+
+      # Step 3: Run tests using Maven (TestNG will generate the report)
       - run:
           name: Run Tests with TestNG
           command: mvn test
 
-      # Step 3: Upload the TestNG results to Zephyr Scale using a script
+      # Step 4: Upload the TestNG results to Zephyr Scale using a script
       - run:
           name: Upload Test Results to Zephyr Scale
           command: |
@@ -31,7 +42,7 @@ jobs:
                 # Prepare the request for Zephyr Scale API (adjust for your API endpoint and credentials)
                 curl -X POST -u "YOUR_USERNAME:YOUR_API_TOKEN" \
                 -H "Content-Type: application/json" \
-                -d @target/test-classes/testng-results.xml \
+                -d @target/test-output/testng-results.xml \
                 "https://YOUR_ZEPHYR_URL/zephyr/api/latest/testresult"
             else
                 echo "TestNG results file not found. Skipping Zephyr upload."
