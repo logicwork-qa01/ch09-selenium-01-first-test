@@ -1,0 +1,44 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: maven:3.8.1-openjdk-8  # Use Maven with JDK 8
+    steps:
+      - checkout  # Check out the code from the repository
+
+      # Step 1: Install dependencies using Maven
+      - run:
+          name: Set up Maven
+          command: mvn clean install
+
+      # Step 2: Run tests using Maven (TestNG will generate the report)
+      - run:
+          name: Run Tests with TestNG
+          command: mvn test
+
+      # Step 3: Upload the TestNG results to Zephyr Scale using a script
+      - run:
+          name: Upload Test Results to Zephyr Scale
+          command: |
+            # TestNG results file location
+            TESTNG_RESULTS_FILE="target/test-output/testng-results.xml"
+
+            # Check if the file exists
+            if [ -f "$TESTNG_RESULTS_FILE" ]; then
+                echo "TestNG results found. Uploading to Zephyr Scale..."
+
+                # Prepare the request for Zephyr Scale API (adjust for your API endpoint and credentials)
+                curl -X POST -u "YOUR_USERNAME:YOUR_API_TOKEN" \
+                -H "Content-Type: application/json" \
+                -d @target/test-classes/testng-results.xml \
+                "https://YOUR_ZEPHYR_URL/zephyr/api/latest/testresult"
+            else
+                echo "TestNG results file not found. Skipping Zephyr upload."
+            fi
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test

@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
@@ -14,10 +15,10 @@ public class NewToursTest {
 	@Test
 	public void test() throws InterruptedException {
 		// for WINDOWS-64
-    	// System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\win64_chromedriver_133_0_6943_53.exe");
+    	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\win64_chromedriver_133_0_6943_53.exe");
     	
     	// for LINUX-64
-    	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/linux64_chromedriver_133_0_6943_53");
+    	// System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/linux64_chromedriver_133_0_6943_53");
 		
 		// for MAC-x64
 		// System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/mac_x64_chromedriver_120_0_6099_109");
@@ -26,7 +27,11 @@ public class NewToursTest {
 		// System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/drivers/mac_arm64_chromedriver_120_0_6099_109");
 		
 		//(1) Create a new instance of the Chrome driver
-		WebDriver driver = new ChromeDriver();
+    	ChromeOptions driverOptions = new ChromeOptions();
+        driverOptions.addArguments("--headless"); // Run Chrome in headless mode
+        driverOptions.addArguments("--no-sandbox"); // Required for some environments (e.g., Docker, Jenkins)
+        driverOptions.addArguments("--disable-dev-shm-usage"); // Overcome limited resource problems
+		WebDriver driver = new ChromeDriver(driverOptions);
 		
 		/** Hide (Headless) Browser **/
 		/*
