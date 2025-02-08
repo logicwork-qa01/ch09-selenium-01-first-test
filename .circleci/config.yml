@@ -33,9 +33,6 @@ jobs:
           name: Run Unit Tests in Surefire Format
           command: mvn test || true  # Run the tests; `|| true` ensures job doesn't fail on test failure
       - run:
-          name: Convert Surefire Test Results to JUnit Format
-          command: mvn surefire-report:report-only || true  # Ensure JUnit report is generated
-      - run:
           name: Upload JUnit Results to Zephyr Scale
           command: |
             # TestNG results file location
