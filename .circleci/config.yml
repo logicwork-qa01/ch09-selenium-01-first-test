@@ -68,7 +68,7 @@ jobs:
           command: |
             # TestNG results file location
             # Prepare the request for Zephyr Scale API (adjust for your API endpoint and credentials)
-            curl -X POST "https://api.zephyrscale.smartbear.com/v2/automations/executions/junit?projectKey=SCRUM&autoCreateTestCases=true" \
+            curl -X POST "https://api.zephyrscale.smartbear.com/v2/automations/executions/junit?projectKey=CH09SEL01&autoCreateTestCases=true" \
             -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb250ZXh0Ijp7ImJhc2VVcmwiOiJodHRwczovL2xvZ2ljd29ya3VzYS5hdGxhc3NpYW4ubmV0IiwidXNlciI6eyJhY2NvdW50SWQiOiI3MTIwMjA6OTMyN2U2NGItOTg5Yy00MTg4LWJhOGQtODE0ZGMwNjU4NmNkIiwidG9rZW5JZCI6ImRkYjcxM2ZhLTAyZTctNDJlMC1iYjc1LWFmMjU3ZjgwYmI3OSJ9fSwiaXNzIjoiY29tLmthbm9haC50ZXN0LW1hbmFnZXIiLCJzdWIiOiI5OTU5NDk1Yi0yZjM1LTM0NGItOWZiNC1hMzJkMmEwYTExY2MiLCJleHAiOjE3NzA1MDY5MzMsImlhdCI6MTczODk3MDkzM30.M3FZaQoYaMxUMXJOyvEhUXVE6xqw1b59uR_jlTBIORQ" \
             -H "Content-Type: multipart/form-data" \
             -F "file=@target/surefire-reports/TEST-TestSuite.xml"  # Upload JUnit XML results to Zephyr Scale
