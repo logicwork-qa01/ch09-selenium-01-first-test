@@ -36,20 +36,11 @@ jobs:
           name: Upload JUnit Results to Zephyr Scale
           command: |
             # TestNG results file location
-            TESTNG_RESULTS_FILE="target/surefire-reports/TEST-TestSuite.xml"
-
-            # Check if the file exists
-            if [ -f "$TESTNG_RESULTS_FILE" ]; then
-                echo "TestNG results found. Uploading to Zephyr Scale..."
-
-                # Prepare the request for Zephyr Scale API (adjust for your API endpoint and credentials)
-                curl -X POST "https://api.zephyrscale.smartbear.com/v2/automations/executions/junit?projectKey=SCRUM&autoCreateTestCases=true" \
-                -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb250ZXh0Ijp7ImJhc2VVcmwiOiJodHRwczovL2xvZ2ljd29ya3VzYS5hdGxhc3NpYW4ubmV0IiwidXNlciI6eyJhY2NvdW50SWQiOiI3MTIwMjA6OTMyN2U2NGItOTg5Yy00MTg4LWJhOGQtODE0ZGMwNjU4NmNkIiwidG9rZW5JZCI6ImRkYjcxM2ZhLTAyZTctNDJlMC1iYjc1LWFmMjU3ZjgwYmI3OSJ9fSwiaXNzIjoiY29tLmthbm9haC50ZXN0LW1hbmFnZXIiLCJzdWIiOiI5OTU5NDk1Yi0yZjM1LTM0NGItOWZiNC1hMzJkMmEwYTExY2MiLCJleHAiOjE3NzA1MDY5MzMsImlhdCI6MTczODk3MDkzM30.M3FZaQoYaMxUMXJOyvEhUXVE6xqw1b59uR_jlTBIORQ" \
-                -H "Content-Type: application/xml" \
-                --data-binary @target/surefire-reports/TEST-TestSuite.xml  # Upload JUnit XML results to Zephyr Scale
-            else
-                echo "TestNG results file not found. Skipping Zephyr upload."
-            fi
+            # Prepare the request for Zephyr Scale API (adjust for your API endpoint and credentials)
+            curl -X POST "https://api.zephyrscale.smartbear.com/v2/automations/executions/junit?projectKey=SCRUM&autoCreateTestCases=true" \
+            -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb250ZXh0Ijp7ImJhc2VVcmwiOiJodHRwczovL2xvZ2ljd29ya3VzYS5hdGxhc3NpYW4ubmV0IiwidXNlciI6eyJhY2NvdW50SWQiOiI3MTIwMjA6OTMyN2U2NGItOTg5Yy00MTg4LWJhOGQtODE0ZGMwNjU4NmNkIiwidG9rZW5JZCI6ImRkYjcxM2ZhLTAyZTctNDJlMC1iYjc1LWFmMjU3ZjgwYmI3OSJ9fSwiaXNzIjoiY29tLmthbm9haC50ZXN0LW1hbmFnZXIiLCJzdWIiOiI5OTU5NDk1Yi0yZjM1LTM0NGItOWZiNC1hMzJkMmEwYTExY2MiLCJleHAiOjE3NzA1MDY5MzMsImlhdCI6MTczODk3MDkzM30.M3FZaQoYaMxUMXJOyvEhUXVE6xqw1b59uR_jlTBIORQ" \
+            -H "Content-Type: multipart/form-data" \
+            -F "file=@target/surefire-reports/TEST-TestSuite.xml"  # Upload JUnit XML results to Zephyr Scale
 
 workflows:
   version: 2
