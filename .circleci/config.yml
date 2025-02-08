@@ -22,7 +22,7 @@ jobs:
           command: |
             echo "Downloading ChromeDriver..."
             curl -O https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
-            unzip chromedriver_linux64.zip
+            unzip chromedriver-linux64.zip
             mv chromedriver /usr/local/bin/chromedriver
             chmod +x /usr/local/bin/chromedriver  # Make it executable
 
