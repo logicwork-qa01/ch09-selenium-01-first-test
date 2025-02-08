@@ -36,17 +36,17 @@ jobs:
           name: Upload Test Results to Zephyr Scale
           command: |
             # TestNG results file location
-            TESTNG_RESULTS_FILE="target/test-output/testng-results.xml"
+            TESTNG_RESULTS_FILE="target/surefire-reports/TEST-TestSuite.xml"
 
             # Check if the file exists
             if [ -f "$TESTNG_RESULTS_FILE" ]; then
                 echo "TestNG results found. Uploading to Zephyr Scale..."
 
                 # Prepare the request for Zephyr Scale API (adjust for your API endpoint and credentials)
-                curl -X POST -u "YOUR_USERNAME:YOUR_API_TOKEN" \
-                -H "Content-Type: application/json" \
-                -d @target/test-output/testng-results.xml \
-                "https://YOUR_ZEPHYR_URL/zephyr/api/latest/testresult"
+                curl -X POST "https://api.zephyrscale.smartbear.com/v2/automations/executions/junit?projectKey=SCRUM&autoCreateTestCases=true" \
+                -H "Authorization: Bearer <your_zephyr_api_token>" \
+                -H "Content-Type: application/xml" \
+                --data-binary @target/surefire-reports/TEST-TestSuite.xml  # Upload JUnit XML results to Zephyr Scale
             else
                 echo "TestNG results file not found. Skipping Zephyr upload."
             fi
