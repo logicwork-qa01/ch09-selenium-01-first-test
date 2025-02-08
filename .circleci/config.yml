@@ -14,7 +14,7 @@ jobs:
           name: Install unzip and curl
           command: |
             echo "Installing dependencies..."
-            apt-get update && apt-get install -y unzip curl
+            apt-get update && apt-get install -y unzip curl wget
             apt-get install -y \
             ca-certificates \
             libxss1 \
@@ -34,6 +34,9 @@ jobs:
             libxss1 \
             libgbm1 \
             libu2f-udev \
+            libvulkan1 \
+            wget \
+            xdg-utils \
             --no-install-recommends \
             && rm -rf /var/lib/apt/lists/*
       # Install Google Chrome browser
