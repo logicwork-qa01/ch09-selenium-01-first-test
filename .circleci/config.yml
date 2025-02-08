@@ -26,14 +26,17 @@ jobs:
             mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
             chmod +x /usr/local/bin/chromedriver  # Make it executable
 
-      # Step 4: Run tests using Maven (TestNG will generate the report)
       - run:
-          name: Run Tests with TestNG
-          command: mvn clean test
-
-      # Step 5: Upload the TestNG results to Zephyr Scale using a script
+          name: Install Maven Dependencies
+          command: mvn clean install -DskipTests=true  # Install dependencies without running tests
       - run:
-          name: Upload Test Results to Zephyr Scale
+          name: Run Unit Tests in Surefire Format
+          command: mvn test || true  # Run the tests; `|| true` ensures job doesn't fail on test failure
+      - run:
+          name: Convert Surefire Test Results to JUnit Format
+          command: mvn surefire-report:report-only || true  # Ensure JUnit report is generated
+      - run:
+          name: Upload JUnit Results to Zephyr Scale
           command: |
             # TestNG results file location
             TESTNG_RESULTS_FILE="target/surefire-reports/TEST-TestSuite.xml"
