@@ -15,11 +15,11 @@ public class NewToursTest {
 	@Test
 	public void test() throws InterruptedException {
 		// Get ChromeDriver path from environment variable
-		String chromeDriverPath = System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\win64_chromedriver_133_0_6943_53.exe";
+//		String chromeDriverPath = System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\win64_chromedriver_133_0_6943_53.exe";
 //		String chromeDriverPath = System.getProperty("user.dir") + "/src/main/resources/drivers/linux64_chromedriver_133_0_6943_53";
 //		String chromeDriverPath = System.getProperty("user.dir") + "/src/main/resources/drivers/mac_x64_chromedriver_120_0_6099_109";
 //		String chromeDriverPath = System.getProperty("user.dir") + "/src/main/resources/drivers/mac_arm64_chromedriver_120_0_6099_109";
-//		String chromeDriverPath = System.getenv("CHROMEDRIVER_PATH");
+		String chromeDriverPath = System.getenv("CHROMEDRIVER_PATH");
         
         // Ensure that the path is not null or empty
         if (chromeDriverPath == null || chromeDriverPath.isEmpty()) {
