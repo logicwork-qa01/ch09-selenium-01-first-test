@@ -30,9 +30,9 @@ public class NewToursTest {
 		
 		//(1) Create a new instance of the Chrome driver
     	ChromeOptions driverOptions = new ChromeOptions();
-        // driverOptions.addArguments("--headless"); // Run Chrome in headless mode
-        // driverOptions.addArguments("--no-sandbox"); // Required for some environments (e.g., Docker, Jenkins)
-        // driverOptions.addArguments("--disable-dev-shm-usage"); // Overcome limited resource problems
+        driverOptions.addArguments("--headless"); // Run Chrome in headless mode
+        driverOptions.addArguments("--no-sandbox"); // Required for some environments (e.g., Docker, Jenkins)
+        driverOptions.addArguments("--disable-dev-shm-usage"); // Overcome limited resource problems
 		WebDriver driver = new ChromeDriver(driverOptions);
 		
 		/** Hide (Headless) Browser **/
